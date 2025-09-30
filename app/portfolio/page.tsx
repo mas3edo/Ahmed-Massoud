@@ -154,51 +154,6 @@ export default function Portfolio() {
               </a>
             </div>
           </div>
-
-          {/* Project 4: Blog */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://mas3edo.github.io/posts/"
-                className="w-full h-full border-0"
-                title="Blog & Posts"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-3">
-                <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  Blog
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                Blog & Posts
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                A clean and modern blog platform for sharing thoughts
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
-                  HTML
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
-                  CSS
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
-                  JavaScript
-                </span>
-              </div>
-              <a
-                href="https://mas3edo.github.io/posts/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
         </div>
       </section>
     </main>
