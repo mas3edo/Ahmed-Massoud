@@ -19,9 +19,9 @@ export default function Portfolio() {
 
       {/* Projects Grid */}
       <section className="px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Project 1: Main Portfolio */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
               <iframe
                 src="https://mas3edo.github.io/portfolio/"
@@ -31,26 +31,26 @@ export default function Portfolio() {
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-3">
-                <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                   Portfolio
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                 Main Portfolio
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
                 My personal portfolio showcasing my work and skills
               </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+              <div className="flex flex-wrap gap-1 mb-3">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   HTML
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   CSS
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   JavaScript
                 </span>
               </div>
@@ -58,7 +58,7 @@ export default function Portfolio() {
                 href="https://mas3edo.github.io/portfolio/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
               >
                 Visit Site
               </a>
@@ -66,7 +66,7 @@ export default function Portfolio() {
           </div>
 
           {/* Project 2: E-Commerce */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
               <iframe
                 src="https://mas3edo.github.io/E-Commerce/"
@@ -76,26 +76,26 @@ export default function Portfolio() {
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-3">
-                <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-2 py-1 rounded-full text-xs font-medium">
                   E-Commerce
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                 E-Commerce Platform
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
                 A modern e-commerce solution with shopping cart functionality
               </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+              <div className="flex flex-wrap gap-1 mb-3">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   React
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   CSS
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   JavaScript
                 </span>
               </div>
@@ -103,7 +103,7 @@ export default function Portfolio() {
                 href="https://mas3edo.github.io/E-Commerce/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block"
+                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
               >
                 Visit Site
               </a>
@@ -111,7 +111,7 @@ export default function Portfolio() {
           </div>
 
           {/* Project 3: Games */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
               <iframe
                 src="https://mas3edo.github.io/games/"
@@ -121,26 +121,26 @@ export default function Portfolio() {
                 sandbox="allow-scripts allow-same-origin"
               />
             </div>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-3">
-                <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
                   Games
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                 Games Collection
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
                 Interactive games built with vanilla JavaScript
               </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+              <div className="flex flex-wrap gap-1 mb-3">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   JavaScript
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   HTML5
                 </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   CSS3
                 </span>
               </div>
@@ -148,7 +148,7 @@ export default function Portfolio() {
                 href="https://mas3edo.github.io/games/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block"
+                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
               >
                 Visit Site
               </a>
