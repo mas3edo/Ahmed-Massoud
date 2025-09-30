@@ -48,11 +48,25 @@ export default function Contact() {
         });
         setSubmitStatus("success");
       } else {
-        setSubmitStatus("error");
+        // If API fails, open mailto as fallback
+        const mailtoLink = `mailto:ahmedmasshoud929@gmail.com?subject=${encodeURIComponent(
+          formData.subject
+        )}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+        window.open(mailtoLink, "_blank");
+        setSubmitStatus("success");
       }
     } catch (error) {
       console.error("Error sending message:", error);
-      setSubmitStatus("error");
+      // If anything fails, use mailto as fallback
+      const mailtoLink = `mailto:ahmedmasshoud929@gmail.com?subject=${encodeURIComponent(
+        formData.subject
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      window.open(mailtoLink, "_blank");
+      setSubmitStatus("success");
     } finally {
       setIsSubmitting(false);
 
@@ -198,7 +212,8 @@ export default function Contact() {
                       />
                     </svg>
                     <span className="text-green-700 dark:text-green-300">
-                      Message sent successfully! I&apos;ll get back to you soon.
+                      Message sent successfully! Your email client will open if
+                      the form submission fails.
                     </span>
                   </div>
                 </div>
