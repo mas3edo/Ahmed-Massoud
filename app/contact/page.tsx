@@ -29,52 +29,32 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+    // Use mailto directly - this always works and opens the user's email client
+    const subject = encodeURIComponent(
+      `Portfolio Contact: ${formData.subject}`
+    );
+    const body = encodeURIComponent(
+      `Hi Ahmed,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nSent from your portfolio contact form.`
+    );
+    const mailtoLink = `mailto:ahmedmasshoud929@gmail.com?subject=${subject}&body=${body}`;
 
-      if (response.ok) {
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-        setSubmitStatus("success");
-      } else {
-        // If API fails, open mailto as fallback
-        const mailtoLink = `mailto:ahmedmasshoud929@gmail.com?subject=${encodeURIComponent(
-          formData.subject
-        )}&body=${encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        )}`;
-        window.open(mailtoLink, "_blank");
-        setSubmitStatus("success");
-      }
-    } catch (error) {
-      console.error("Error sending message:", error);
-      // If anything fails, use mailto as fallback
-      const mailtoLink = `mailto:ahmedmasshoud929@gmail.com?subject=${encodeURIComponent(
-        formData.subject
-      )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`;
-      window.open(mailtoLink, "_blank");
-      setSubmitStatus("success");
-    } finally {
-      setIsSubmitting(false);
+    // Open email client
+    window.location.href = mailtoLink;
 
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus("idle");
-      }, 5000);
-    }
+    // Reset form and show success
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+    setSubmitStatus("success");
+    setIsSubmitting(false);
+
+    // Reset status after 5 seconds
+    setTimeout(() => {
+      setSubmitStatus("idle");
+    }, 5000);
   };
   const contactInfo = [
     {
@@ -212,8 +192,9 @@ export default function Contact() {
                       />
                     </svg>
                     <span className="text-green-700 dark:text-green-300">
-                      Message sent successfully! Your email client will open if
-                      the form submission fails.
+                      Success! Your email client should open with the message
+                      ready to send. Please send the email to complete your
+                      contact request.
                     </span>
                   </div>
                 </div>
