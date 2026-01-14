@@ -84,7 +84,7 @@ export default function About() {
                         Developer
                       </p>
                       <p className="text-xs text-gray-600 dark:text-gray-400">
-                        5+ Years
+                        +1 Years
                       </p>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ export default function About() {
                   <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     Hello! I&apos;m Massoud, a passionate developer and designer
                     who loves creating digital experiences that make a
-                    difference. With over 5 years of experience in web
+                    difference. With over 1 years of experience in web
                     development, I specialize in building modern, responsive
                     applications that users love.
                   </p>
