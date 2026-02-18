@@ -155,7 +155,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Project 4: Clothing Store Demo */}
+          {/* Project 4: Clothing Store Demo (Next.js + Tailwind) */}
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
               <iframe
@@ -180,10 +180,19 @@ export default function Portfolio() {
               </p>
               <div className="flex flex-wrap gap-1 mb-3">
                 <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  React
+                  Next.js
                 </span>
                 <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   Tailwind
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  HTML
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  CSS
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  JavaScript
                 </span>
               </div>
               <a
@@ -197,7 +206,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          {/* Project 5: Sofra Restaurant */}
+          {/* Project 5: Sofra Restaurant (React + Tailwind) */}
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
               <iframe
@@ -222,10 +231,19 @@ export default function Portfolio() {
               </p>
               <div className="flex flex-wrap gap-1 mb-3">
                 <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  Next.js
+                  React
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  Tailwind
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  HTML
                 </span>
                 <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
                   CSS
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  JavaScript
                 </span>
               </div>
               <a
