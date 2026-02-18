@@ -154,6 +154,90 @@ export default function Portfolio() {
               </a>
             </div>
           </div>
+
+          {/* Project 4: Clothing Store Demo */}
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
+              <iframe
+                src="https://task2-chi-rust.vercel.app"
+                className="w-full h-full border-0"
+                title="Clothing Store Demo"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
+              />
+            </div>
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  Fashion Store
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                Clothing Store Demo
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                A modern fashion e-commerce interface showcasing clothing products
+              </p>
+              <div className="flex flex-wrap gap-1 mb-3">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  React
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  Tailwind
+                </span>
+              </div>
+              <a
+                href="https://task2-chi-rust.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
+              >
+                Visit Site
+              </a>
+            </div>
+          </div>
+
+          {/* Project 5: Sofra Restaurant */}
+          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
+              <iframe
+                src="https://my-task-flax-five.vercel.app"
+                className="w-full h-full border-0"
+                title="Sofra Restaurant"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
+              />
+            </div>
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  Restaurant
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                Sofra Restaurant
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
+                 A delicious restaurant website demo with menu and dining UI
+              </p>
+              <div className="flex flex-wrap gap-1 mb-3">
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  Next.js
+                </span>
+                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
+                  CSS
+                </span>
+              </div>
+              <a
+                href="https://my-task-flax-five.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
+              >
+                Visit Site
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>
