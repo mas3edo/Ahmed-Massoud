@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./navbar";
-import { ThemeProvider } from "./contexts/ThemeContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,14 +37,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#050505] text-white selection:bg-neon-cyan selection:text-black`}
       >
-        <ThemeProvider>
-          <Navbar />
+        {/* Dynamic Background Elements */}
+        <div className="fixed inset-0 z-[-1] bg-grid-pattern opacity-30 pointer-events-none" />
+        <div className="fixed inset-0 z-[-1] bg-gradient-to-b from-transparent via-[#050505]/50 to-[#050505] pointer-events-none" />
+
+        {/* Glowing Orbs */}
+        <div className="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-neon-cyan/10 blur-[120px] pointer-events-none z-[-1]" />
+        <div className="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-neon-purple/10 blur-[120px] pointer-events-none z-[-1]" />
+
+        <Navbar />
+        <main className="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto flex flex-col gap-32">
           {children}
-        </ThemeProvider>
+        </main>
       </body>
     </html>
   );

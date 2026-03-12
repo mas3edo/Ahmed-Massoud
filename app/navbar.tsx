@@ -1,322 +1,204 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "./contexts/ThemeContext";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Home, User, Zap, Briefcase, Code2, Mail } from "lucide-react";
 
-function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const navItems = [
+  { name: "Home", sectionId: "home", icon: Home },
+  { name: "About", sectionId: "about", icon: User },
+  { name: "Skills", sectionId: "skills", icon: Zap },
+  { name: "Portfolio", sectionId: "portfolio", icon: Code2 },
+  { name: "Experience", sectionId: "experience", icon: Briefcase },
+  { name: "Contact", sectionId: "contact", icon: Mail },
+];
+
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Smooth scroll function
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      
+      const sections = navItems.map(item => item.sectionId);
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top >= -150 && rect.top <= 300;
+        }
+        return false;
+      });
+      
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
+    setMobileMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
-      // Close mobile menu after clicking
-      setIsMenuOpen(false);
+      setActiveSection(sectionId);
     }
   };
 
-  // Handle scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-xl border-b border-gray-200/20 dark:border-gray-700/20"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo Section - The Brand Story */}
-          <div className="flex items-center space-x-3">
-            <div className="relative group">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-800 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                <span className="text-white text-xl font-bold tracking-tight">
-                  M
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+          isScrolled 
+            ? "bg-[#050505]/80 backdrop-blur-xl border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)] py-3" 
+            : "bg-transparent border-transparent py-5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex items-center justify-between">
+          
+          {/* Logo Zone */}
+          <div 
+            className="flex-1 flex items-center gap-4 cursor-pointer group"
+            onClick={() => scrollToSection("home")}
+          >
+            <div className="relative flex items-center justify-center w-12 h-12">
+              <svg className="absolute inset-0 w-full h-full text-neon-cyan/20 group-hover:text-neon-cyan/50 transition-colors duration-500 animate-[spin_10s_linear_infinite]" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="10 5" />
+              </svg>
+              <div className="w-8 h-8 bg-neon-cyan/10 border border-neon-cyan/50 rounded flex items-center justify-center group-hover:bg-neon-cyan/20 transition-all duration-300">
+                <span className="text-neon-cyan font-bold tracking-tighter text-sm">AM</span>
               </div>
             </div>
-            <div className="hidden sm:block">
-              <button
-                onClick={() => scrollToSection("home")}
-                className={`text-2xl font-bold transition-colors duration-300 hover:opacity-80 ${
-                  isScrolled ? "text-gray-900 dark:text-white" : "text-white"
-                }`}
-              >
-                Massoud
-              </button>
-              <div
-                className={`text-xs font-medium tracking-widest uppercase transition-colors duration-300 ${
-                  isScrolled
-                    ? "text-gray-500 dark:text-gray-400"
-                    : "text-gray-300"
-                }`}
-              >
-                Frontend Developer
-              </div>
+            <div className="flex flex-col">
+              <span className="text-white font-black tracking-[0.2em] text-sm uppercase leading-none mb-1">Massoud</span>
+              <span className="text-neon-purple font-mono text-[9px] tracking-[0.3em] uppercase leading-none opacity-80">System.Dev</span>
             </div>
           </div>
 
-          {/* Desktop Navigation - The Journey */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {[
-              { name: "Home", sectionId: "home", icon: "🏠" },
-              { name: "About", sectionId: "about", icon: "👨‍💼" },
-              { name: "Skills", sectionId: "skills", icon: "⚡" },
-              { name: "Portfolio", sectionId: "portfolio", icon: "🎨" },
-              { name: "Experience", sectionId: "experience", icon: "🚀" },
-              { name: "Contact", sectionId: "contact", icon: "📞" },
-            ].map((item, index) => (
+          {/* Core Routes (Desktop) */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.sectionId)}
-                className={`group relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gray-100/80 dark:hover:bg-gray-800/50 ${
-                  isScrolled
-                    ? "text-gray-800 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                    : "text-white/90 hover:text-white"
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group relative flex flex-col items-center justify-center h-full py-2"
               >
-                <span className="flex items-center space-x-2">
-                  <span className="text-sm opacity-70 group-hover:opacity-100 transition-opacity">
-                    {item.icon}
-                  </span>
-                  <span className="font-medium">{item.name}</span>
+                <span className={`font-mono text-xs tracking-[0.2em] uppercase transition-colors duration-300 z-10 ${
+                  activeSection === item.sectionId
+                    ? "text-neon-cyan shadow-neon-cyan font-bold"
+                    : "text-gray-400 hover:text-white"
+                }`}>
+                  {item.name}
                 </span>
-                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></div>
+                
+                {/* Underline Active State */}
+                {activeSection === item.sectionId && (
+                  <motion.div
+                    layoutId="desktopActiveLine"
+                    className="absolute -bottom-2 w-full h-[2px] bg-neon-cyan shadow-[0_0_10px_rgba(0,243,255,0.8)]"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-white/5 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded" />
               </button>
             ))}
-          </div>
+          </nav>
 
-          {/* CTA Button - The Call to Action */}
-          <div className="hidden lg:flex items-center space-x-4">
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-all duration-300 hover:scale-105 ${
-                isScrolled
-                  ? "text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  : "text-white hover:bg-white/10"
-              }`}
-              aria-label="Toggle dark mode"
-            >
-              {theme === "dark" ? (
-                // Sun icon for light mode
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              ) : (
-                // Moon icon for dark mode
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  />
-                </svg>
-              )}
-            </button>
-
+          {/* Action Zone */}
+          <div className="hidden lg:flex items-center gap-6">
+            <div className="h-6 w-px bg-white/10" />
             <button
               onClick={() => scrollToSection("contact")}
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105"
+              className="group relative px-6 py-2.5 overflow-hidden"
             >
-              <span className="relative z-10 flex items-center space-x-2">
-                <span>Let&apos;s Connect</span>
-                <svg
-                  className="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+              <div className="absolute inset-0 border border-neon-purple/50 bg-neon-purple/5 skew-x-[-15deg] group-hover:bg-neon-purple/20 transition-colors duration-300" />
+              <span className="relative z-10 font-mono text-xs font-bold tracking-widest text-neon-purple group-hover:text-white transition-colors uppercase">
+                Initialize Contact
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center space-x-2">
-            {/* Mobile Dark Mode Toggle */}
+          {/* Mobile Toggle */}
+          <div className="flex-1 flex justify-end lg:hidden">
             <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-all duration-300 ${
-                isScrolled
-                  ? "text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  : "text-white hover:bg-white/10"
-              }`}
-              aria-label="Toggle dark mode"
+              className="relative z-50 p-2 text-white hover:text-neon-cyan transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {theme === "dark" ? (
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  />
-                </svg>
-              )}
-            </button>
-
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 rounded-lg transition-colors duration-300 ${
-                isScrolled
-                  ? "text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                  : "text-white hover:bg-white/10"
-              }`}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d={
-                    isMenuOpen
-                      ? "M6 18L18 6M6 6l12 12"
-                      : "M4 6h16M4 12h16M4 18h16"
-                  }
-                />
-              </svg>
+              {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
         </div>
+      </motion.header>
 
-        {/* Mobile Menu - The Mobile Experience */}
-        <div
-          className={`lg:hidden transition-all duration-500 ease-in-out overflow-hidden ${
-            isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="py-6 px-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-xl mx-4 my-4 shadow-2xl border border-gray-200/20 dark:border-gray-700/20">
-            <div className="space-y-3">
-              {[
-                { name: "Home", sectionId: "home", icon: "🏠" },
-                { name: "About", sectionId: "about", icon: "👨‍💼" },
-                { name: "Skills", sectionId: "skills", icon: "⚡" },
-                { name: "Portfolio", sectionId: "portfolio", icon: "🎨" },
-                { name: "Experience", sectionId: "experience", icon: "🚀" },
-                { name: "Contact", sectionId: "contact", icon: "📞" },
-              ].map((item, index) => (
-                <button
+      {/* Full Screen Mobile Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 bg-[#050505]/95 flex flex-col items-center justify-center lg:hidden"
+          >
+            <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none" />
+            
+            <nav className="flex flex-col gap-8 items-center relative z-10 w-full px-6">
+              {navItems.map((item, idx) => (
+                <motion.button
                   key={item.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
                   onClick={() => scrollToSection(item.sectionId)}
-                  className="flex items-center space-x-4 px-6 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 bg-gray-50/50 dark:bg-gray-800/50 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 shadow-sm hover:shadow-md w-full text-left"
-                  style={{
-                    animationDelay: `${index * 100}ms`,
-                    animation: isMenuOpen
-                      ? "slideInFromRight 0.5s ease-out forwards"
-                      : "none",
-                  }}
+                  className="group relative flex items-center justify-center w-full"
                 >
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="font-semibold text-lg">{item.name}</span>
-                  <div className="ml-auto">
-                    <svg
-                      className="w-5 h-5 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </div>
-                </button>
+                  <span className={`text-2xl md:text-3xl font-black uppercase tracking-[0.2em] transition-all duration-300 ${
+                    activeSection === item.sectionId
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple scale-110"
+                      : "text-gray-500 hover:text-white"
+                  }`}>
+                    {item.name}
+                  </span>
+                  {activeSection === item.sectionId && (
+                    <motion.div
+                      layoutId="mobileActiveItem"
+                      className="absolute -left-4 w-1 h-full bg-neon-cyan shadow-[0_0_15px_rgba(0,243,255,0.8)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
               ))}
 
-              <div className="pt-6 mt-6 border-t border-gray-200 dark:border-gray-700/50">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: navItems.length * 0.1 + 0.2 }}
+                className="w-full pt-8 mt-4 border-t border-white/10"
+              >
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 w-full"
+                  className="w-full py-4 bg-neon-purple/20 border border-neon-purple text-neon-purple font-bold tracking-[0.2em] uppercase hover:bg-neon-purple/40 hover:shadow-[0_0_30px_rgba(181,55,242,0.4)] transition-all duration-300"
                 >
-                  <span>Let&apos;s Connect</span>
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
+                  Initialize Contact
                 </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+              </motion.div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
-
-export default Navbar;

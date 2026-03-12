@@ -1,263 +1,156 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Code2, ArrowUpRight } from "lucide-react";
+
 export default function Portfolio() {
+  const projects = [
+    {
+      title: "Main Portfolio",
+      desc: "My personal digital imprint showcasing my core architecture and design patterns.",
+      url: "https://mas3edo.github.io/portfolio/",
+      tags: ["HTML", "CSS", "JavaScript"],
+      color: "from-neon-cyan/20 to-transparent border-neon-cyan/50 text-neon-cyan"
+    },
+    {
+      title: "E-Commerce Platform",
+      desc: "A high-performance e-commerce solution with dynamic shopping cart and optimized checkout flow.",
+      url: "https://mas3edo.github.io/E-Commerce/",
+      tags: ["React", "CSS", "JavaScript"],
+      color: "from-green-500/20 to-transparent border-green-500/50 text-green-400"
+    },
+    {
+      title: "Games Collection",
+      desc: "A collection of interactive experiences built entirely utilizing vanilla DOM manipulation.",
+      url: "https://mas3edo.github.io/games/",
+      tags: ["JavaScript", "HTML5", "CSS3"],
+      color: "from-neon-magenta/20 to-transparent border-neon-magenta/50 text-neon-magenta"
+    },
+    {
+      title: "Fashion Store",
+      desc: "A modern, highly aesthetic fashion e-commerce interface showcasing premium products.",
+      url: "https://task2-chi-rust.vercel.app",
+      tags: ["Next.js", "Tailwind", "JavaScript"],
+      color: "from-pink-500/20 to-transparent border-pink-500/50 text-pink-400"
+    },
+    {
+      title: "Sofra Restaurant",
+      desc: "A delectable restaurant website demo with an immersive menu and dining UI.",
+      url: "https://my-task-flax-five.vercel.app",
+      tags: ["React", "Tailwind", "JavaScript"],
+      color: "from-amber-500/20 to-transparent border-amber-500/50 text-amber-400"
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            My{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Portfolio
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Explore my collection of web development projects, from e-commerce
-            platforms to interactive games
+    <section className="relative min-h-screen py-32 flex flex-col items-center overflow-hidden">
+      
+      {/* Background elements */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-neon-purple/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-neon-cyan/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto w-full px-4 md:px-6 relative z-10">
+        
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <div className="flex items-center gap-6 mb-4">
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-white">
+              Featured
+            </h2>
+            <div className="h-2 flex-1 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDBmM2ZmIiAvPgo8L3N2Zz4=')] opacity-50" />
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 ml-12 md:ml-24">
+            Deployments
+          </h2>
+          <p className="mt-8 ml-12 md:ml-24 text-gray-400 max-w-xl font-light text-lg">
+            A curated selection of high-performance web applications and interactive experiences engineered for optimal user engagement.
           </p>
+        </motion.div>
+
+        <div className="flex flex-col gap-24 md:gap-32 w-full">
+          {projects.map((project, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, scale: 0.95, y: 50 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
+              >
+                
+                {/* Project Visual (Iframe wrapper) */}
+                <div className="w-full lg:w-3/5 group">
+                  <div className={`relative w-full aspect-[16/10] sm:aspect-video rounded-xl md:rounded-3xl overflow-hidden glass border-2 transition-all duration-500 ${project.color.split(' ')[1]}`}>
+                    
+                    {/* Cyber-deck window header */}
+                    <div className="absolute top-0 inset-x-0 h-8 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center px-4 gap-2 z-20">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                      <div className="ml-4 font-mono text-[10px] text-gray-400 tracking-widest uppercase">{project.title.replace(/\s+/g, '_').toLowerCase()}.exe</div>
+                    </div>
+
+                    <div className="absolute inset-0 pt-8 z-10 bg-[#050505]">
+                      {/* Overlay to prevent accidental iframe capture taking over scroll */}
+                      <div className="absolute inset-0 z-20 hover:pointer-events-none transition-opacity bg-black/20 group-hover:opacity-0" />
+                      <iframe
+                        src={project.url}
+                        className="w-full h-full border-0 filter grayscale-[50%] contrast-125 group-hover:grayscale-0 transition-all duration-700"
+                        title={project.title}
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Project Info */}
+                <div className={`w-full lg:w-2/5 flex flex-col ${isEven ? '' : 'lg:items-end lg:text-right'}`}>
+                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${project.color.split(' ')[0]} border ${project.color.split(' ')[1]} mb-6`}>
+                    <Code2 className={`w-4 h-4 ${project.color.split(' ')[2]}`} />
+                    <span className={`text-xs font-bold uppercase tracking-widest ${project.color.split(' ')[2]}`}>System.{idx+1}</span>
+                  </div>
+                  
+                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-wider text-white mb-4">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 font-light leading-relaxed text-lg mb-8 max-w-lg">
+                    {project.desc}
+                  </p>
+
+                  <div className={`flex flex-wrap gap-2 mb-10 ${isEven ? '' : 'lg:justify-end'}`}>
+                    {project.tags.map((tag, i) => (
+                      <span key={i} className="px-3 py-1 bg-white/5 border border-white/10 rounded-md text-xs font-mono text-gray-300 tracking-widest">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={`flex items-center gap-4 ${isEven ? '' : 'lg:justify-end'}`}>
+                    <a 
+                      href={project.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group/btn relative px-6 py-3 bg-white text-black font-mono font-bold uppercase tracking-[0.2em] text-xs transition-colors duration-300 hover:bg-gray-200 flex items-center gap-3 border border-transparent shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                    >
+                      <span className="relative z-10">INITIALIZE</span>
+                      <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                    </a>
+                  </div>
+                </div>
+
+              </motion.div>
+            );
+          })}
         </div>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Project 1: Main Portfolio */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://mas3edo.github.io/portfolio/"
-                className="w-full h-full border-0"
-                title="Main Portfolio"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  Portfolio
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Main Portfolio
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                My personal portfolio showcasing my work and skills
-              </p>
-              <div className="flex flex-wrap gap-1 mb-3">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  HTML
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  CSS
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  JavaScript
-                </span>
-              </div>
-              <a
-                href="https://mas3edo.github.io/portfolio/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
-
-          {/* Project 2: E-Commerce */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://mas3edo.github.io/E-Commerce/"
-                className="w-full h-full border-0"
-                title="E-Commerce Platform"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  E-Commerce
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                E-Commerce Platform
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                A modern e-commerce solution with shopping cart functionality
-              </p>
-              <div className="flex flex-wrap gap-1 mb-3">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  React
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  CSS
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  JavaScript
-                </span>
-              </div>
-              <a
-                href="https://mas3edo.github.io/E-Commerce/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
-
-          {/* Project 3: Games */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://mas3edo.github.io/games/"
-                className="w-full h-full border-0"
-                title="Games Collection"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  Games
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Games Collection
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                Interactive games built with vanilla JavaScript
-              </p>
-              <div className="flex flex-wrap gap-1 mb-3">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  JavaScript
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  HTML5
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  CSS3
-                </span>
-              </div>
-              <a
-                href="https://mas3edo.github.io/games/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
-
-          {/* Project 4: Clothing Store Demo (Next.js + Tailwind) */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://task2-chi-rust.vercel.app"
-                className="w-full h-full border-0"
-                title="Clothing Store Demo"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  Fashion Store
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Clothing Store Demo
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                A modern fashion e-commerce interface showcasing clothing products
-              </p>
-              <div className="flex flex-wrap gap-1 mb-3">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  Next.js
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  Tailwind
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  HTML
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  CSS
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  JavaScript
-                </span>
-              </div>
-              <a
-                href="https://task2-chi-rust.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
-
-          {/* Project 5: Sofra Restaurant (React + Tailwind) */}
-          <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl shadow-lg border border-gray-200/20 dark:border-gray-700/20 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            <div className="aspect-video relative bg-gray-100 dark:bg-gray-900">
-              <iframe
-                src="https://my-task-flax-five.vercel.app"
-                className="w-full h-full border-0"
-                title="Sofra Restaurant"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-              />
-            </div>
-            <div className="p-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-2 py-1 rounded-full text-xs font-medium">
-                  Restaurant
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                Sofra Restaurant
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm">
-                 A delicious restaurant website demo with menu and dining UI
-              </p>
-              <div className="flex flex-wrap gap-1 mb-3">
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  React
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  Tailwind
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  HTML
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  CSS
-                </span>
-                <span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-xs">
-                  JavaScript
-                </span>
-              </div>
-              <a
-                href="https://my-task-flax-five.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-3 py-2 rounded-lg hover:shadow-lg transition-all duration-300 font-medium inline-block text-sm"
-              >
-                Visit Site
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
