@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, ArrowUpRight } from "lucide-react";
+import { Code2, ArrowUpRight, Plane } from "lucide-react";
 
 export default function Portfolio() {
   const projects = [
@@ -32,6 +32,13 @@ export default function Portfolio() {
       url: "https://task2-chi-rust.vercel.app",
       tags: ["Next.js", "Tailwind", "JavaScript"],
       color: "from-pink-500/20 to-transparent border-pink-500/50 text-pink-400"
+    },
+    {
+      title: "Beige E-Commerce",
+      desc: "A next-generation e-commerce platform currently under construction and actively being engineered.",
+      url: "https://ecommerce-app-beige-alpha.vercel.app/",
+      tags: ["Next.js", "Loading", "In Progress"],
+      color: "from-blue-500/20 to-transparent border-blue-500/50 text-blue-400"
     },
     {
       title: "Sofra Restaurant",
@@ -140,8 +147,12 @@ export default function Portfolio() {
                       rel="noopener noreferrer"
                       className="group/btn relative px-6 py-3 bg-white text-black font-mono font-bold uppercase tracking-[0.2em] text-xs transition-colors duration-300 hover:bg-gray-200 flex items-center gap-3 border border-transparent shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                     >
-                      <span className="relative z-10">INITIALIZE</span>
-                      <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                      <span className="relative z-10">{project.tags.includes("Loading") ? "DEPLOYING..." : "INITIALIZE"}</span>
+                      {project.tags.includes("Loading") ? (
+                        <Plane className="relative z-10 w-4 h-4 transition-transform group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1" />
+                      ) : (
+                        <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" />
+                      )}
                     </a>
                   </div>
                 </div>
