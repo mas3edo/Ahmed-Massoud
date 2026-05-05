@@ -4,12 +4,10 @@ import Skills from "./skilles/page";
 import Portfolio from "./portfolio/page";
 import Experience from "./experience/page";
 import Contact from "./contact/page";
-import Footer from "./footer";
 
 export default function Page() {
   return (
     <>
-
       <section id="home">
         <Home />
       </section>
@@ -28,10 +26,6 @@ export default function Page() {
       <section id="contact">
         <Contact />
       </section>
-      <section id="footer">
-        <Footer />
-      </section>
-
     </>
   );
 }

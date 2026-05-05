@@ -5,36 +5,34 @@ import { Code2, Layout, Database, Terminal, Figma, MonitorSmartphone, Settings, 
 
 export default function Skills() {
   const skillsRow1 = [
-    { name: "React", icon: Code2, color: "text-[#61DAFB]" },
-    { name: "Next.js", icon: MonitorSmartphone, color: "text-white" },
-    { name: "TypeScript", icon: FileCode2, color: "text-[#3178C6]" },
-    { name: "Tailwind CSS", icon: Layout, color: "text-[#38B2AC]" },
-    { name: "Framer Motion", icon: Cpu, color: "text-neon-purple" },
-    { name: "Node.js", icon: Terminal, color: "text-[#339933]" },
+    { name: "React", icon: Code2, color: "group-hover:text-aurora-blue", border: "hover:border-aurora-blue" },
+    { name: "Next.js", icon: MonitorSmartphone, color: "group-hover:text-gray-900 dark:group-hover:text-white", border: "hover:border-gray-900 dark:hover:border-white" },
+    { name: "TypeScript", icon: FileCode2, color: "group-hover:text-aurora-blue", border: "hover:border-aurora-blue" },
+    { name: "Tailwind CSS", icon: Layout, color: "group-hover:text-aurora-purple", border: "hover:border-aurora-purple" },
+    { name: "Framer Motion", icon: Cpu, color: "group-hover:text-aurora-red", border: "hover:border-aurora-red" },
+    { name: "Node.js", icon: Terminal, color: "group-hover:text-aurora-blue", border: "hover:border-aurora-blue" },
   ];
 
   const skillsRow2 = [
-    { name: "Figma", icon: Figma, color: "text-[#F24E1E]" },
-    { name: "UI/UX Design", icon: Layout, color: "text-neon-magenta" },
-    { name: "PostgreSQL", icon: Database, color: "text-[#336791]" },
-    { name: "Git", icon: Settings, color: "text-[#F05032]" },
-    { name: "WebGL", icon: Code2, color: "text-[#990000]" },
-    { name: "GraphQL", icon: Database, color: "text-[#E10098]" },
+    { name: "Figma", icon: Figma, color: "group-hover:text-aurora-red", border: "hover:border-aurora-red" },
+    { name: "UI/UX Design", icon: Layout, color: "group-hover:text-aurora-purple", border: "hover:border-aurora-purple" },
+    { name: "PostgreSQL", icon: Database, color: "group-hover:text-aurora-blue", border: "hover:border-aurora-blue" },
+    { name: "Git", icon: Settings, color: "group-hover:text-aurora-red", border: "hover:border-aurora-red" },
+    { name: "WebGL", icon: Code2, color: "group-hover:text-aurora-purple", border: "hover:border-aurora-purple" },
+    { name: "GraphQL", icon: Database, color: "group-hover:text-aurora-blue", border: "hover:border-aurora-blue" },
   ];
 
-  // Helper component to fix the icon import issue inline for the first row since we didn't import FileCode2
   return (
     <section className="relative py-32 overflow-hidden flex flex-col items-center justify-center">
-      <div className="max-w-7xl mx-auto px-6 w-full text-center mb-16">
+      <div className="max-w-7xl mx-auto px-6 w-full text-center mb-16 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="inline-block relative group"
         >
-          <div className="absolute inset-0 bg-neon-cyan/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-widest text-white relative z-10">
-            Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-magenta">Stack</span>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white relative z-10 drop-shadow-sm dark:drop-shadow-md">
+            Tech <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurora-purple to-aurora-red">Stack</span>
           </h2>
         </motion.div>
         <motion.p 
@@ -42,40 +40,40 @@ export default function Skills() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-6 text-gray-400 max-w-2xl mx-auto font-light tracking-wide"
+          className="mt-6 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-medium tracking-wide text-lg drop-shadow-none dark:drop-shadow-md"
         >
           Equipped with advanced toolsets to architect high-performance, visually stunning applications.
         </motion.p>
       </div>
 
       {/* Marquee Container 1 (Left to Right) */}
-      <div className="relative w-full flex overflow-hidden py-4 -rotate-2 transform scale-110 mb-8">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] z-10 pointer-events-none" />
+      <div className="relative w-full flex overflow-hidden py-6 -rotate-2 transform scale-110 mb-8" style={{ transform: "scale(1.1) rotate(-2deg) translateZ(0)" }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 via-transparent to-gray-50 dark:from-[#030014] dark:via-transparent dark:to-[#030014] z-10 pointer-events-none" />
         {/* We render the row twice to create the infinite scroll effect */}
-        <div className="flex animate-marquee whitespace-nowrap min-w-full group">
+        <div className="flex animate-marquee whitespace-nowrap min-w-full will-change-transform">
           {[...skillsRow1, ...skillsRow1, ...skillsRow1].map((skill, idx) => (
             <div 
               key={idx} 
-              className="mx-4 flex items-center justify-center glass px-8 py-4 rounded-full border border-white/5 hover:border-neon-cyan/50 hover:shadow-[0_0_20px_rgba(0,243,255,0.2)] transition-all duration-300 gap-4"
+              className={`mx-3 flex items-center justify-center bg-white dark:bg-[#0a0a0a] px-8 py-4 rounded-full border border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none transition-colors duration-300 gap-4 cursor-default group ${skill.border}`}
             >
-              <skill.icon className={`w-6 h-6 ${skill.color}`} />
-              <span className="text-white font-bold tracking-widest uppercase text-sm md:text-base">{skill.name}</span>
+              <skill.icon className={`w-6 h-6 text-gray-500 dark:text-gray-400 ${skill.color} transition-colors duration-300`} />
+              <span className="text-gray-900 dark:text-white font-bold tracking-widest uppercase text-sm transition-colors duration-300">{skill.name}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Marquee Container 2 (Right to Left) */}
-      <div className="relative w-full flex overflow-hidden py-4 rotate-2 transform scale-110">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-transparent to-[#050505] z-10 pointer-events-none" />
-        <div className="flex animate-marquee whitespace-nowrap min-w-full flex-row-reverse group select-none">
+      <div className="relative w-full flex overflow-hidden py-6 rotate-2 transform scale-110" style={{ transform: "scale(1.1) rotate(2deg) translateZ(0)" }}>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-50 via-transparent to-gray-50 dark:from-[#030014] dark:via-transparent dark:to-[#030014] z-10 pointer-events-none" />
+        <div className="flex animate-marquee whitespace-nowrap min-w-full flex-row-reverse select-none will-change-transform">
           {[...skillsRow2, ...skillsRow2, ...skillsRow2].map((skill, idx) => (
             <div 
               key={idx} 
-              className="mx-4 flex items-center justify-center glass px-8 py-4 rounded-full border border-white/5 hover:border-neon-purple/50 hover:shadow-[0_0_20px_rgba(181,55,242,0.2)] transition-all duration-300 gap-4"
+              className={`mx-3 flex items-center justify-center bg-white dark:bg-[#0a0a0a] px-8 py-4 rounded-full border border-gray-200 dark:border-white/5 shadow-sm dark:shadow-none transition-colors duration-300 gap-4 cursor-default group ${skill.border}`}
             >
-              <skill.icon className={`w-6 h-6 ${skill.color}`} />
-              <span className="text-white font-bold tracking-widest uppercase text-sm md:text-base">{skill.name}</span>
+              <skill.icon className={`w-6 h-6 text-gray-500 dark:text-gray-400 ${skill.color} transition-colors duration-300`} />
+              <span className="text-gray-900 dark:text-white font-bold tracking-widest uppercase text-sm transition-colors duration-300">{skill.name}</span>
             </div>
           ))}
         </div>
