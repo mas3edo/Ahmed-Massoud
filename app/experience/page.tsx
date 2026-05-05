@@ -63,7 +63,7 @@ export default function Experience() {
         {/* Timeline Container */}
         <div className="relative">
           {/* Center Trace */}
-          <div className="absolute left-8 md:left-1/2 top-4 bottom-4 w-px -translate-x-1/2 bg-gray-300 dark:bg-white/10 z-0">
+          <div className="absolute left-6 md:left-1/2 top-4 bottom-4 w-px -translate-x-1/2 bg-gray-300 dark:bg-white/10 z-0">
             <motion.div 
               initial={{ height: "0%" }}
               whileInView={{ height: "100%" }}
@@ -87,16 +87,16 @@ export default function Experience() {
                 >
                   
                   {/* Center Node */}
-                  <div className={`absolute left-8 md:left-1/2 -translate-x-1/2 w-14 h-14 rounded-full bg-white dark:bg-[#030014] border-2 border-gray-300 dark:border-white/20 z-20 flex items-center justify-center transition-all duration-500 group-hover/card:scale-125 group-hover/card:border-${exp.color} group-hover/card:shadow-[0_0_30px_rgba(0,85,255,0.4)] shadow-sm dark:shadow-none`}>
-                    <div className={`w-4 h-4 rounded-full bg-gray-200 dark:bg-white/20 group-hover/card:bg-${exp.color} transition-colors duration-500 shadow-inner`} />
+                  <div className={`absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white dark:bg-[#030014] border-2 border-gray-300 dark:border-white/20 z-20 flex items-center justify-center transition-all duration-500 group-hover/card:scale-125 group-hover/card:border-${exp.color} group-hover/card:shadow-[0_0_30px_rgba(0,85,255,0.4)] shadow-sm dark:shadow-none`}>
+                    <div className={`w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-200 dark:bg-white/20 group-hover/card:bg-${exp.color} transition-colors duration-500 shadow-inner`} />
                   </div>
 
                   {/* Spacer for empty side */}
                   <div className="hidden md:block md:w-1/2" />
 
                   {/* Content Card */}
-                  <div className={`w-full pl-16 sm:pl-20 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-16' : 'md:pl-16'}`}>
-                    <div className={`glass-vibrant p-6 md:p-8 rounded-3xl transition-all duration-500 cursor-default hover:shadow-[0_0_40px_rgba(123,44,191,0.2)] hover:-translate-y-2 relative overflow-hidden`}>
+                  <div className={`w-full pl-14 sm:pl-16 md:pl-0 md:w-1/2 ${isEven ? 'md:pr-16' : 'md:pl-16'}`}>
+                    <div className={`glass-vibrant p-5 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-500 cursor-default hover:shadow-[0_0_40px_rgba(123,44,191,0.2)] hover:-translate-y-2 relative overflow-hidden`}>
                       
                       <div className={`absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br ${exp.gradient} rounded-full blur-3xl opacity-10 dark:opacity-20 group-hover/card:opacity-30 dark:group-hover/card:opacity-40 transition-opacity duration-500 pointer-events-none`} />
 

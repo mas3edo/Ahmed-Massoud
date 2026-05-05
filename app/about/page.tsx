@@ -58,12 +58,12 @@ export default function About() {
                   <motion.div 
                     key={idx} 
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="border border-gray-200 dark:border-white/10 rounded-2xl p-5 bg-white/80 dark:bg-white/[0.03] backdrop-blur-md shadow-md dark:shadow-lg transition-all duration-300 group/stat flex flex-col items-center justify-center text-center relative overflow-hidden"
+                    className="border border-gray-200 dark:border-white/10 rounded-2xl p-3 sm:p-5 bg-white/80 dark:bg-white/[0.03] backdrop-blur-md shadow-md dark:shadow-lg transition-all duration-300 group/stat flex flex-col items-center justify-center text-center relative overflow-hidden"
                   >
                     <div className={`absolute inset-0 bg-gradient-to-b from-transparent to-gray-100 dark:to-white/5 opacity-0 group-hover/stat:opacity-100 transition-opacity duration-300`} />
                     <stat.icon className={`w-8 h-8 mb-4 ${stat.color} drop-shadow-sm`} />
-                    <span className="block text-gray-900 dark:text-white text-2xl font-black mb-1">{stat.value}</span>
-                    <span className="block text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">{stat.label}</span>
+                    <span className="block text-gray-900 dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl font-black mb-1 w-full truncate">{stat.value}</span>
+                    <span className="block text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold w-full truncate">{stat.label}</span>
                   </motion.div>
                 ))}
               </div>

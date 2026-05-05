@@ -62,7 +62,7 @@ export default function Contact() {
           transition={{ duration: 0.6, type: "spring" }}
           className="glass-vibrant p-2 rounded-3xl relative overflow-hidden group hover:shadow-[0_0_50px_rgba(123,44,191,0.3)] transition-shadow duration-500"
         >
-          <div className="bg-white/80 dark:bg-[#030014]/80 backdrop-blur-3xl rounded-2xl p-6 md:p-12 relative z-10 w-full border border-gray-200 dark:border-white/10">
+          <div className="bg-white/80 dark:bg-[#030014]/80 backdrop-blur-3xl rounded-2xl p-5 sm:p-8 md:p-12 relative z-10 w-full border border-gray-200 dark:border-white/10">
 
             <form onSubmit={handleSubmit} className="space-y-6">
               
@@ -85,7 +85,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-aurora-blue/50 focus:bg-white dark:focus:bg-aurora-blue/5 focus:shadow-[0_0_15px_rgba(0,85,255,0.2)] transition-all font-medium"
+                    className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-gray-900 dark:text-white focus:outline-none focus:border-aurora-blue/50 focus:bg-white dark:focus:bg-aurora-blue/5 focus:shadow-[0_0_15px_rgba(0,85,255,0.2)] transition-all font-medium"
                     placeholder="John Doe"
                   />
                 </div>
@@ -96,7 +96,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-aurora-purple/50 focus:bg-white dark:focus:bg-aurora-purple/5 focus:shadow-[0_0_15px_rgba(123,44,191,0.2)] transition-all font-medium"
+                    className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-gray-900 dark:text-white focus:outline-none focus:border-aurora-purple/50 focus:bg-white dark:focus:bg-aurora-purple/5 focus:shadow-[0_0_15px_rgba(123,44,191,0.2)] transition-all font-medium"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -109,7 +109,7 @@ export default function Contact() {
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                  className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-aurora-red/50 focus:bg-white dark:focus:bg-aurora-red/5 focus:shadow-[0_0_15px_rgba(217,4,41,0.2)] transition-all font-medium"
+                  className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-gray-900 dark:text-white focus:outline-none focus:border-aurora-red/50 focus:bg-white dark:focus:bg-aurora-red/5 focus:shadow-[0_0_15px_rgba(217,4,41,0.2)] transition-all font-medium"
                   placeholder="Project Inquiry"
                 />
               </div>
@@ -118,25 +118,25 @@ export default function Contact() {
                 <label className="text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-widest pl-1 group-focus-within/input:text-aurora-blue transition-colors">Message</label>
                 <textarea
                   required
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-5 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-aurora-blue/50 focus:bg-white dark:focus:bg-aurora-blue/5 focus:shadow-[0_0_15px_rgba(0,85,255,0.2)] transition-all resize-none font-medium"
+                  className="w-full bg-gray-50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 md:px-5 md:py-4 text-sm md:text-base text-gray-900 dark:text-white focus:outline-none focus:border-aurora-blue/50 focus:bg-white dark:focus:bg-aurora-blue/5 focus:shadow-[0_0_15px_rgba(0,85,255,0.2)] transition-all resize-none font-medium"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
-              <div className="pt-6 flex justify-end">
+              <div className="pt-4 md:pt-6 flex justify-end">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group/btn relative w-full md:w-auto px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-sm rounded-full disabled:opacity-50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95"
+                  className="group/btn relative w-full md:w-auto px-6 md:px-10 py-4 md:py-5 bg-gray-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs md:text-sm rounded-full disabled:opacity-50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] active:scale-95"
                 >
                   <div className="relative z-10 flex items-center justify-center gap-3 group-hover/btn:text-white transition-colors duration-300">
                     <span>
                       {isSubmitting ? "Processing..." : "Transmit Message"}
                     </span>
-                    {!isSubmitting && <Send className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />}
+                    {!isSubmitting && <Send className="w-4 h-4 md:w-5 md:h-5 group-hover/btn:translate-x-1 transition-transform" />}
                   </div>
                   <div className={`absolute inset-0 bg-gradient-to-r from-aurora-blue to-aurora-purple transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500 ease-out z-0`} />
                 </button>

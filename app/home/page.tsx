@@ -25,7 +25,7 @@ export default function Home() {
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-aurora-blue/20 dark:bg-aurora-blue/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] bg-aurora-purple/20 dark:bg-aurora-purple/10 rounded-full blur-[120px] pointer-events-none" />
       
-      <div className="max-w-7xl w-full mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+      <div className="max-w-7xl w-full mx-auto px-6 relative z-10 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
         
         {/* Left Side: Elegant Typography */}
         <motion.div 
@@ -87,7 +87,7 @@ export default function Home() {
           className="w-full lg:w-1/2 flex justify-center lg:justify-end relative"
         >
           {/* Elegant Image Container */}
-          <div className="relative w-full max-w-[280px] h-[350px] sm:max-w-[300px] sm:h-[380px] md:max-w-[350px] md:h-[450px] flex items-center justify-center perspective-1000">
+          <div className="relative w-full max-w-[200px] h-[250px] sm:max-w-[250px] sm:h-[320px] md:max-w-[350px] md:h-[450px] flex items-center justify-center perspective-1000 mt-8 lg:mt-0">
             
             {/* Glowing Backdrop */}
             <motion.div 
