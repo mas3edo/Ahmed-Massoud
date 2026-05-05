@@ -73,7 +73,7 @@ export default function About() {
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })} 
                   className="relative px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-black text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded-full hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] inline-flex items-center justify-center gap-3 overflow-hidden group/btn"
                 >
-                  <span className="relative z-10 transition-colors duration-300">Let's Connect</span>
+                  <span className="relative z-10 transition-colors duration-300">Let&apos;s Connect</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-aurora-blue to-aurora-purple transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500 ease-out z-0" />
                 </button>
               </div>

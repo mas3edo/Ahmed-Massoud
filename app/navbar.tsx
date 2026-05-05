@@ -111,7 +111,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection("contact")}
                 className="px-5 py-2.5 rounded-full text-[15px] font-medium bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors shadow-sm"
               >
-                Let's Talk
+                Let&apos;s Talk
               </button>
             </div>
 
@@ -161,7 +161,7 @@ export default function Navbar() {
                   onClick={() => scrollToSection("contact")}
                   className="w-full py-4 rounded-full bg-blue-600 text-white font-medium text-lg"
                 >
-                  Let's Talk
+                  Let&apos;s Talk
                 </button>
               </div>
             </div>

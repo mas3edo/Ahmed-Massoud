@@ -51,7 +51,7 @@ export default function Contact() {
             Get in <span className="text-transparent bg-clip-text bg-gradient-to-r from-aurora-purple to-aurora-red">Touch</span>
           </h2>
           <p className="mt-6 text-gray-600 dark:text-gray-300 max-w-lg font-medium text-lg drop-shadow-none dark:drop-shadow-md">
-            Have a project in mind or just want to say hi? I'd love to hear from you.
+            Have a project in mind or just want to say hi? I&apos;d love to hear from you.
           </p>
         </motion.div>
 
