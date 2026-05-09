@@ -43,7 +43,7 @@ export default function Portfolio() {
     {
       title: "Beige E-Commerce",
       desc: "A next-generation e-commerce platform currently under construction and actively being engineered.",
-      url: "https://ecommerce-app-beige-alpha.vercel.app/",
+      url: "https://ecommerce-app-pi-flax.vercel.app/",
       tags: ["Next.js", "Loading", "In Progress"],
       color: "from-aurora-red to-aurora-purple",
     },
@@ -58,10 +58,10 @@ export default function Portfolio() {
 
   return (
     <section className="relative min-h-screen py-32 flex flex-col items-center overflow-hidden">
-      
+
       <div className="max-w-7xl mx-auto w-full px-4 md:px-6 relative z-10">
-        
-        <motion.div 
+
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -81,7 +81,7 @@ export default function Portfolio() {
           {projects.map((project, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -89,17 +89,17 @@ export default function Portfolio() {
                 transition={{ duration: 0.7, ease: "easeOut", type: "spring" }}
                 className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-12 items-center`}
               >
-                
+
                 {/* Project Visual */}
                 <div className="w-full lg:w-3/5 group">
                   <div className={`relative w-full aspect-[16/10] sm:aspect-video rounded-3xl overflow-hidden bg-white/50 dark:bg-white/5 backdrop-blur-md p-2 transition-all duration-500 shadow-md hover:shadow-[0_0_40px_rgba(123,44,191,0.2)] dark:hover:shadow-[0_0_40px_rgba(123,44,191,0.3)] hover:scale-[1.03] hover:-translate-y-2 border border-gray-200 dark:border-white/10`}>
-                    
+
                     <div className="absolute inset-2 z-10 bg-gray-100 dark:bg-[#030014] rounded-2xl overflow-hidden border border-gray-300 dark:border-white/10">
                       {/* Overlay */}
                       <div className="absolute inset-0 z-20 hover:pointer-events-none transition-opacity bg-gradient-to-b from-transparent to-gray-900/40 dark:to-[#030014]/80 group-hover:opacity-0 flex items-center justify-center">
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white/50 dark:bg-white/10 backdrop-blur-md px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
-                           <span className="text-gray-900 dark:text-white text-sm font-bold tracking-widest uppercase">Explore Project</span>
-                           <ArrowUpRight className="w-4 h-4 text-gray-900 dark:text-white" />
+                          <span className="text-gray-900 dark:text-white text-sm font-bold tracking-widest uppercase">Explore Project</span>
+                          <ArrowUpRight className="w-4 h-4 text-gray-900 dark:text-white" />
                         </div>
                       </div>
                       <iframe
@@ -117,13 +117,13 @@ export default function Portfolio() {
                 <div className={`w-full lg:w-2/5 flex flex-col ${isEven ? '' : 'lg:items-end lg:text-right'}`}>
                   <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gray-300 dark:border-white/10 bg-gradient-to-r ${project.color} bg-opacity-10 dark:bg-opacity-20 backdrop-blur-sm mb-6 shadow-sm`}>
                     <Code2 className="w-4 h-4 text-gray-900 dark:text-white drop-shadow-sm" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-gray-900 dark:text-white drop-shadow-sm">Project {idx+1}</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-gray-900 dark:text-white drop-shadow-sm">Project {idx + 1}</span>
                   </div>
-                  
+
                   <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-4 drop-shadow-sm dark:drop-shadow-md">
                     {project.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed text-lg mb-8 max-w-lg drop-shadow-none dark:drop-shadow-md">
                     {project.desc}
                   </p>
@@ -137,9 +137,9 @@ export default function Portfolio() {
                   </div>
 
                   <div className={`flex items-center gap-4 ${isEven ? '' : 'lg:justify-end'}`}>
-                    <a 
-                      href={project.url} 
-                      target="_blank" 
+                    <a
+                      href={project.url}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="group/btn relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] rounded-full flex items-center gap-3 overflow-hidden"
                     >
