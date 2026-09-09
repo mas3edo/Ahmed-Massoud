@@ -57,7 +57,7 @@ export default function Portfolio() {
     {
       title: "Beige E-Commerce",
       desc: "A next-generation e-commerce platform currently under construction and actively being engineered.",
-      url: "https://ecommerce-app-beige-alpha.vercel.app/",
+      url: "https://ecommerce-app-pi-flax.vercel.app/",
       githubUrl: "https://github.com/mas3edo/ecommerce-app",
       tags: ["Next.js", "Loading", "In Progress"],
       color: "from-aurora-red to-aurora-purple",
