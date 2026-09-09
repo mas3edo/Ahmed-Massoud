@@ -25,6 +25,7 @@ export default function Portfolio() {
     {
       title: "Main Portfolio",
       desc: "My personal digital imprint showcasing my core architecture and design patterns.",
+      url: "https://mas3edo.github.io/portfolio/",
       githubUrl: "https://github.com/mas3edo/portfolio",
       tags: ["HTML", "CSS", "JavaScript"],
       color: "from-aurora-purple to-aurora-red",
@@ -32,6 +33,7 @@ export default function Portfolio() {
     {
       title: "E-Commerce Platform",
       desc: "A high-performance e-commerce solution with dynamic shopping cart and optimized checkout flow.",
+      url: "https://mas3edo.github.io/E-Commerce/",
       githubUrl: "https://github.com/mas3edo/E-Commerce",
       tags: ["React", "CSS", "JavaScript"],
       color: "from-aurora-red to-aurora-blue",
@@ -39,6 +41,7 @@ export default function Portfolio() {
     {
       title: "Games Collection",
       desc: "A collection of interactive experiences built entirely utilizing vanilla DOM manipulation.",
+      url: "https://mas3edo.github.io/games/",
       githubUrl: "https://github.com/mas3edo/games",
       tags: ["JavaScript", "HTML5", "CSS3"],
       color: "from-aurora-blue to-aurora-red",
