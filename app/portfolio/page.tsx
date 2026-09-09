@@ -1,35 +1,45 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight, Code2, Github } from "lucide-react";
+
+type Project = {
+  title: string;
+  desc: string;
+  url?: string;
+  githubUrl: string;
+  tags: string[];
+  color: string;
+};
 
 export default function Portfolio() {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Wasl Agency",
       desc: "A comprehensive digital marketing agency website connecting brands to their target audiences in Kuwait and the Gulf.",
       url: "https://wasl-nine.vercel.app",
+      githubUrl: "https://github.com/mas3edo/Wasl",
       tags: ["Next.js", "Marketing", "Agency", "SEO"],
       color: "from-aurora-blue to-aurora-purple",
     },
     {
       title: "Main Portfolio",
       desc: "My personal digital imprint showcasing my core architecture and design patterns.",
-      url: "https://mas3edo.github.io/portfolio/",
+      githubUrl: "https://github.com/mas3edo/portfolio",
       tags: ["HTML", "CSS", "JavaScript"],
       color: "from-aurora-purple to-aurora-red",
     },
     {
       title: "E-Commerce Platform",
       desc: "A high-performance e-commerce solution with dynamic shopping cart and optimized checkout flow.",
-      url: "https://mas3edo.github.io/E-Commerce/",
+      githubUrl: "https://github.com/mas3edo/E-Commerce",
       tags: ["React", "CSS", "JavaScript"],
       color: "from-aurora-red to-aurora-blue",
     },
     {
       title: "Games Collection",
       desc: "A collection of interactive experiences built entirely utilizing vanilla DOM manipulation.",
-      url: "https://mas3edo.github.io/games/",
+      githubUrl: "https://github.com/mas3edo/games",
       tags: ["JavaScript", "HTML5", "CSS3"],
       color: "from-aurora-blue to-aurora-red",
     },
@@ -37,13 +47,15 @@ export default function Portfolio() {
       title: "Fashion Store",
       desc: "A modern, highly aesthetic fashion e-commerce interface showcasing premium products.",
       url: "https://task2-chi-rust.vercel.app",
+      githubUrl: "https://github.com/mas3edo/task2",
       tags: ["Next.js", "Tailwind", "JavaScript"],
       color: "from-aurora-purple to-aurora-blue",
     },
     {
       title: "Beige E-Commerce",
       desc: "A next-generation e-commerce platform currently under construction and actively being engineered.",
-      url: "https://ecommerce-app-pi-flax.vercel.app/",
+      url: "https://ecommerce-app-beige-alpha.vercel.app/",
+      githubUrl: "https://github.com/mas3edo/ecommerce-app",
       tags: ["Next.js", "Loading", "In Progress"],
       color: "from-aurora-red to-aurora-purple",
     },
@@ -51,6 +63,7 @@ export default function Portfolio() {
       title: "Sofra Restaurant",
       desc: "A delectable restaurant website demo with an immersive menu and dining UI.",
       url: "https://my-task-flax-five.vercel.app",
+      githubUrl: "https://github.com/mas3edo/my-task",
       tags: ["React", "Tailwind", "JavaScript"],
       color: "from-aurora-blue to-aurora-purple",
     }
@@ -102,13 +115,22 @@ export default function Portfolio() {
                           <ArrowUpRight className="w-4 h-4 text-gray-900 dark:text-white" />
                         </div>
                       </div>
-                      <iframe
-                        src={project.url}
-                        className="w-full h-full border-0 filter contrast-100 dark:contrast-125 saturate-100 dark:saturate-50 group-hover:saturate-100 transition-all duration-700"
-                        title={project.title}
-                        loading="lazy"
-                        sandbox="allow-scripts allow-same-origin"
-                      />
+                      {project.url ? (
+                        <iframe
+                          src={project.url}
+                          className="w-full h-full border-0 filter contrast-100 dark:contrast-125 saturate-100 dark:saturate-50 group-hover:saturate-100 transition-all duration-700"
+                          title={project.title}
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin"
+                        />
+                      ) : (
+                        <div className={`flex h-full items-center justify-center bg-gradient-to-br ${project.color} p-8`}>
+                          <div className="flex flex-col items-center gap-4 rounded-2xl bg-black/20 px-8 py-10 text-center backdrop-blur-sm">
+                            <Github className="h-10 w-10 text-white" />
+                            <span className="text-sm font-bold uppercase tracking-widest text-white">GitHub Repository</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -137,15 +159,27 @@ export default function Portfolio() {
                   </div>
 
                   <div className={`flex items-center gap-4 ${isEven ? '' : 'lg:justify-end'}`}>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn relative flex items-center gap-3 overflow-hidden rounded-full bg-gray-900 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:bg-white dark:text-black dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]"
+                      >
+                        <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-white">{project.tags.includes("Loading") ? "In Progress" : "Visit Website"}</span>
+                        <ArrowUpRight className="relative z-10 h-4 w-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 group-hover/btn:text-white" />
+                        <div className={`absolute inset-0 z-0 -translate-x-full transform bg-gradient-to-r ${project.color} transition-transform duration-500 ease-out group-hover/btn:translate-x-0`} />
+                      </a>
+                    )}
                     <a
-                      href={project.url}
+                      href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn relative px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] rounded-full flex items-center gap-3 overflow-hidden"
+                      aria-label={`View ${project.title} source code on GitHub`}
+                      className="group/github flex items-center gap-2 rounded-full border border-gray-300 dark:border-white/20 px-6 py-4 text-xs font-bold uppercase tracking-widest text-gray-900 dark:text-white transition-all duration-300 hover:scale-105 hover:border-gray-900 dark:hover:border-white hover:bg-gray-100 dark:hover:bg-white/10"
                     >
-                      <span className="relative z-10 transition-colors duration-300 group-hover/btn:text-white">{project.tags.includes("Loading") ? "In Progress" : "Visit Website"}</span>
-                      <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 group-hover/btn:text-white" />
-                      <div className={`absolute inset-0 bg-gradient-to-r ${project.color} transform -translate-x-full group-hover/btn:translate-x-0 transition-transform duration-500 ease-out z-0`} />
+                      <Github className="h-4 w-4 transition-transform group-hover/github:-rotate-12" />
+                      View Code
                     </a>
                   </div>
                 </div>
