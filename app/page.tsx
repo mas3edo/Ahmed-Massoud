@@ -6,7 +6,7 @@ export default function Page() {
 <section className="hero"><p className="term"><b>$</b> <em>whoami</em> <span className="caret"></span></p><span className="pill"><i />Available for freelance, Winter 2026</span>
 <h1>Frontend dev<br />who ships <span>fast.</span></h1>
 <p className="lead">I&apos;m Ahmed Massoud. I build quick, polished interfaces in React and Next.js, from agency sites to checkout flows.</p>
-<div className="cta"><a className="btn p" href="#work">See my work</a><a className="btn g" href="mailto:ahmedmasshoud929@gmail.com">Say hello</a></div>
+<div className="cta"><a className="btn p" href="#work">See my work</a><a className="btn g" href="https://wa.me/201027111958" target="_blank" rel="noopener noreferrer">Say hello</a></div>
 <div className="bento" id="about"><div className="c photo">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="/formal.jpg" alt="Portrait of Ahmed Massoud" /></div>
 <div className="c about"><h2>I bridge <em>aesthetic design systems</em> and <em>optimal performance</em>.</h2><p>A year and a half from HTML and CSS basics to production apps in the React ecosystem. I care about the last 5%: easing curves, focus states, the 40 ms of jank.</p>
 <div className="stats"><div><b>1.5+</b><small>Years coding</small></div><div><b>15+</b><small>Projects shipped</small></div><div><b>Next.js</b><small>Core stack</small></div><div><b>Cairo</b><small>Based in</small></div></div></div></div>
