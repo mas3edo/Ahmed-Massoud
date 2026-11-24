@@ -1,30 +1,34 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Fraunces, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import ScrollToTop from "./components/ScrollToTop";
+import SiteFx from "./components/SiteFx";
 import { ThemeProvider } from "../components/theme-provider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const display = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-display",
+  display: "swap",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const bodyFont = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Ahmed Massoud - Frontend Developer Portfolio",
+  title: "Ahmed Massoud — Frontend Developer",
   description:
-    "Frontend Developer specializing in React, Next.js, and modern web technologies. View my projects and get in touch.",
+    "Ahmed Massoud is a frontend developer in Cairo, Egypt, building fast, expressive interfaces with React, Next.js and TypeScript.",
   openGraph: {
-    title: "Ahmed Massoud - Frontend Developer Portfolio",
+    title: "Ahmed Massoud — Frontend Developer",
     description:
-      "Frontend Developer specializing in React, Next.js, and modern web technologies.",
+      "Frontend developer crafting fast, expressive interfaces with a designer's eye and an engineer's discipline.",
     type: "website",
   },
 };
@@ -35,27 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#f9fafb] dark:bg-[#030014] text-black dark:text-white transition-colors duration-500 selection:bg-aurora-blue/30 selection:text-white flex flex-col min-h-screen overflow-x-hidden`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          {/* Vibrant Aurora Background (Dark Mode only) */}
-          <div className="fixed inset-0 z-[-2] hidden dark:block bg-aurora opacity-30 pointer-events-none" />
-          <div className="fixed inset-0 z-[-1] hidden dark:block aurora-mesh opacity-70 pointer-events-none" />
-          
-          {/* Light Mode subtle background */}
-          <div className="fixed inset-0 z-[-2] block dark:hidden bg-gradient-to-br from-white via-gray-50 to-gray-200 opacity-80 pointer-events-none" />
-          <div className="fixed inset-0 z-[-1] block dark:hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-aurora-blue/5 via-transparent to-transparent pointer-events-none" />
-
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${display.variable} ${bodyFont.variable}`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <Navbar />
-          
-          <main className="flex-grow relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto flex flex-col gap-32 w-full overflow-x-hidden">
-            {children}
-          </main>
-          
+          <main>{children}</main>
           <Footer />
           <ScrollToTop />
+          <SiteFx />
         </ThemeProvider>
       </body>
     </html>

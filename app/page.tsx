@@ -4,6 +4,7 @@ import Skills from "./skilles/page";
 import Portfolio from "./portfolio/page";
 import Experience from "./experience/page";
 import Contact from "./contact/page";
+import Capabilities from "./components/Capabilities";
 
 export default function Page() {
   return (
@@ -11,15 +12,16 @@ export default function Page() {
       <section id="home">
         <Home />
       </section>
-      <section id="about">
-        <About />
-      </section>
       <section id="skills">
         <Skills />
       </section>
       <section id="portfolio">
         <Portfolio />
       </section>
+      <section id="about">
+        <About />
+      </section>
+      <Capabilities />
       <section id="experience">
         <Experience />
       </section>
