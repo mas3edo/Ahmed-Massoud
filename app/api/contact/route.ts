@@ -1,91 +1,66 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Google Apps Script web app that appends each submission to a Google Sheet.
+const SHEET_WEBHOOK_URL = process.env.SHEET_WEBHOOK_URL ||
+  "https://script.google.com/macros/s/AKfycbxJHdN0Bpd-R0kscSFtKNpBd_75H2AxmJsQV140I9fwLBQkcVdcSZZbQxHv2FC0tpMZiQ/exec";
+
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, subject, message } = await request.json();
+    const body = await request.json();
+    const clean = (v: unknown, max: number) => String(v ?? "").trim().slice(0, max);
+    const name = clean(body.name, 120);
+    const email = clean(body.email, 200);
+    const subject = clean(body.subject, 200);
+    const message = clean(body.message, 5000);
 
-    // Validate required fields
-    if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: "All fields are required" },
-        { status: 400 }
+    if (!name || !email || !subject || !message || !/^\S+@\S+\.\S+$/.test(email)) {
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    }
+    // Honeypot: bots fill this hidden field.
+    if (body.website) return NextResponse.json({ ok: true });
+
+    const tasks: Promise<boolean>[] = [];
+
+    if (SHEET_WEBHOOK_URL) {
+      tasks.push(
+        fetch(SHEET_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ name, email, subject, message }),
+          redirect: "follow",
+        })
+          .then(async (r) => r.ok && (await r.text()).trim() === "ok")
+          .catch(() => false)
       );
     }
 
-    // Create transporter using Gmail
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER, // Your Gmail address
-        pass: process.env.GMAIL_APP_PASSWORD, // Your Gmail App Password
-      },
-    });
+    if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) {
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
+      });
+      tasks.push(
+        transporter
+          .sendMail({
+            from: process.env.GMAIL_USER,
+            to: "ahmedmasshoud929@gmail.com",
+            replyTo: email,
+            subject: `Portfolio Contact: ${subject}`,
+            text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\nDate: ${new Date().toISOString()}`,
+          })
+          .then(() => true)
+          .catch(() => false)
+      );
+    }
 
-    // Email content
-    const mailOptions = {
-      from: process.env.GMAIL_USER,
-      to: "ahmedmasshoud929@gmail.com", // Your email where you want to receive messages
-      subject: `Portfolio Contact: ${subject}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-          <h2 style="color: #2563eb; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px;">
-            New Contact Form Submission
-          </h2>
-          
-          <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #374151; margin-top: 0;">Contact Details:</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Subject:</strong> ${subject}</p>
-          </div>
-          
-          <div style="background-color: #ffffff; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
-            <h3 style="color: #374151; margin-top: 0;">Message:</h3>
-            <p style="line-height: 1.6; color: #4b5563;">${message.replace(
-              /\n/g,
-              "<br>"
-            )}</p>
-          </div>
-          
-          <div style="margin-top: 20px; padding: 15px; background-color: #f3f4f6; border-radius: 8px; border-left: 4px solid #2563eb;">
-            <p style="margin: 0; color: #6b7280; font-size: 14px;">
-              <strong>Reply to:</strong> ${email}<br>
-              <strong>Sent from:</strong> Portfolio Contact Form<br>
-              <strong>Date:</strong> ${new Date().toLocaleString()}
-            </p>
-          </div>
-        </div>
-      `,
-      // Also include plain text version
-      text: `
-New Contact Form Submission
-
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
-
-Message:
-${message}
-
-Reply to: ${email}
-Sent from: Portfolio Contact Form
-Date: ${new Date().toLocaleString()}
-      `,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
-
-    return NextResponse.json(
-      { message: "Email sent successfully" },
-      { status: 200 }
-    );
+    const results = await Promise.all(tasks);
+    if (!results.some(Boolean)) {
+      return NextResponse.json({ error: "Could not record the message" }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 }
-    );
+    console.error("Contact form error:", error);
+    return NextResponse.json({ error: "Failed" }, { status: 500 });
   }
 }

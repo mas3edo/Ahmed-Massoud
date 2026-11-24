@@ -77,3 +77,4 @@ h2,h4{font-weight:700}h3.sec{font-weight:600}
 .foot{max-width:1120px;margin:60px auto 0;padding:26px 20px 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:13px ui-monospace,Menlo,monospace;color:var(--mu)}
 .foot .fl{display:flex;flex-wrap:wrap;gap:18px}.foot a:hover{color:var(--ac)}
 .dock .logo img{flex-shrink:0;width:34px;height:34px}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
