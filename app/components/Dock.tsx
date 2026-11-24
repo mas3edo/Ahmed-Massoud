@@ -56,12 +56,13 @@ export default function Dock() {
             {label}
           </a>
         ))}
-        <button className="k" onClick={() => setOpen(true)} aria-label="Open command menu">⌘K</button>
+        <button className="k" onClick={() => setOpen(true)} aria-label="Open menu"><b className="kd">⌘K</b><b className="km">☰ Menu</b></button>
         <a className="hire" href="mailto:ahmedmasshoud929@gmail.com">Hire me</a>
       </header>
       <div className={`pal${open ? " o" : ""}`} onClick={() => setOpen(false)}>
         <div onClick={(e) => e.stopPropagation()}>
           <input placeholder="Jump to..." readOnly />
+          <a href="#top" onClick={() => setOpen(false)}>Home</a>
           <a href="#work" onClick={() => setOpen(false)}>Selected work</a>
           <a href="#about" onClick={() => setOpen(false)}>About me</a>
           <a href="#path" onClick={() => setOpen(false)}>Journey</a>

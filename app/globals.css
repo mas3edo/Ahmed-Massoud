@@ -59,7 +59,8 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:24px}
 .term{font:14px ui-monospace,Menlo,monospace;color:var(--mu);margin-bottom:6px}.term b{color:var(--ac);font-weight:400}.term em{font-style:normal;color:var(--tx)}
 .caret{display:inline-block;width:9px;height:16px;background:var(--ac);vertical-align:-3px;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
 .hero{padding-top:130px!important}
-@media(max-width:860px){.dock a.l,.dock .k{display:none}.dock .logo{padding:2px 10px 2px 4px!important;border:0;margin:0}}
+.dock .k{white-space:nowrap}.dock .km{display:none}.dock .k b{font:inherit;font-weight:400}
+@media(max-width:860px){.dock a.l{display:none}.dock .kd{display:none}.dock .km{display:inline}.dock .k{margin-left:auto}.dock .logo{padding:2px 10px 2px 4px!important;border:0;margin:0}}
 
 .form{display:grid;gap:14px;max-width:640px;margin:34px auto 0;text-align:left}
 .form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -72,3 +73,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:24px}
 @media(max-width:860px){.form .row{grid-template-columns:1fr}}
 html{scroll-behavior:smooth}
 h2,h4{font-weight:700}h3.sec{font-weight:600}
+
+.foot{max-width:1120px;margin:60px auto 0;padding:26px 20px 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:13px ui-monospace,Menlo,monospace;color:var(--mu)}
+.foot .fl{display:flex;flex-wrap:wrap;gap:18px}.foot a:hover{color:var(--ac)}
+.dock .logo img{flex-shrink:0;width:34px;height:34px}
