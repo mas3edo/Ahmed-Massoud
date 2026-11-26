@@ -95,4 +95,4 @@ h2,h4{font-weight:700}h3.sec{font-weight:600}
 @media(max-width:560px){.form{padding:18px}.form button{width:100%;justify-self:stretch}}
 
 /* mobile logo: must stay last - later equal-specificity rules override earlier ones */
-@media(max-width:860px){.dock .logo img{width:56px!important;height:56px!important;min-width:56px;max-width:none}}
+@media(max-width:860px){.dock .logo img{width:44px!important;height:44px!important;min-width:44px;max-width:none}}
