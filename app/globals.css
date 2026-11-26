@@ -76,7 +76,7 @@ h2,h4{font-weight:700}h3.sec{font-weight:600}
 
 .foot{max-width:1120px;margin:60px auto 0;padding:26px 20px 40px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;font:13px ui-monospace,Menlo,monospace;color:var(--mu)}
 .foot .fl{display:flex;flex-wrap:wrap;gap:18px}.foot a:hover{color:var(--ac)}
-.dock .logo img{flex-shrink:0;width:34px;height:34px}
+.dock .logo img{flex-shrink:0;width:34px;height:34px;display:block}
 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
 /* contact form v2 */
@@ -95,4 +95,4 @@ h2,h4{font-weight:700}h3.sec{font-weight:600}
 @media(max-width:560px){.form{padding:18px}.form button{width:100%;justify-self:stretch}}
 
 /* mobile logo: must stay last - later equal-specificity rules override earlier ones */
-@media(max-width:860px){.dock .logo img{width:56px;height:56px}}
+@media(max-width:860px){.dock .logo img{width:56px!important;height:56px!important;min-width:56px;max-width:none}}

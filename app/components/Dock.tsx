@@ -48,7 +48,7 @@ export default function Dock() {
       <header className="dock">
         <a className="logo" href="#top" aria-label="Ahmed Massoud, home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.svg" alt="" width={34} height={34} />
+          <img src="/logo-v2.svg" alt="" width={56} height={56} />
         </a>
         {links.map(([id, label], i) => (
           <a key={id} className={`l${active === i ? " on" : ""}`} href={`#${id}`}>
