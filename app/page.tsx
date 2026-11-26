@@ -24,8 +24,8 @@ export default function Page() {
 <h3 className="sec" id="path">Journey</h3>
 <div className="tl"><div className="c"><b>2024</b><h4>Started frontend</h4><p>HTML, CSS and JavaScript fundamentals.</p></div><div className="c"><b>Mid 2024</b><h4>First projects</h4><p>A portfolio and a collection of interactive games.</p></div><div className="c"><b>Late 2024</b><h4>Advanced dev</h4><p>E-commerce and a custom blog engine in React.</p></div><div className="c"><b>2025</b><h4>Modern stack</h4><p>Next.js, TypeScript and Tailwind for real clients.</p></div></div>
 <section className="c contact" id="contact"><h2>Let&apos;s build<br />something.</h2><ContactForm />
-<div className="cta"><a className="btn p" href="mailto:ahmedmasshoud929@gmail.com">Email me</a><a className="btn g" href="https://wa.me/201027111958">WhatsApp</a><a className="btn g" href="https://github.com/mas3edo">GitHub</a><a className="btn g" href="https://www.linkedin.com/in/ahmed-masshoud-b495b730b">LinkedIn</a></div></section>
-<footer className="foot" id="footer"><span>© 2026 Ahmed Massoud</span><span className="fl"><a href="#top">Top ↑</a><a href="https://github.com/mas3edo">GitHub</a><a href="https://www.linkedin.com/in/ahmed-masshoud-b495b730b">LinkedIn</a><a href="https://wa.me/201027111958">WhatsApp</a><a href="mailto:ahmedmasshoud929@gmail.com">Email</a></span></footer>
+<div className="cta"><a className="btn p" href="mailto:ahmedmassouddev@gmail.com">Email me</a><a className="btn g" href="https://wa.me/201027111958">WhatsApp</a><a className="btn g" href="https://github.com/mas3edo">GitHub</a><a className="btn g" href="https://www.linkedin.com/in/ahmed-masshoud-b495b730b">LinkedIn</a></div></section>
+<footer className="foot" id="footer"><span>© 2026 Ahmed Massoud</span><span className="fl"><a href="#top">Top ↑</a><a href="https://github.com/mas3edo">GitHub</a><a href="https://www.linkedin.com/in/ahmed-masshoud-b495b730b">LinkedIn</a><a href="https://wa.me/201027111958">WhatsApp</a><a href="mailto:ahmedmassouddev@gmail.com">Email</a></span></footer>
 </main>
   );
 }

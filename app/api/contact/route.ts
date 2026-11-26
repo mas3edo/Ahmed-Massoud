@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 // Google Apps Script web app that appends each submission to a Google Sheet.
 const SHEET_WEBHOOK_URL = process.env.SHEET_WEBHOOK_URL ||
-  "https://script.google.com/macros/s/AKfycbxJHdN0Bpd-R0kscSFtKNpBd_75H2AxmJsQV140I9fwLBQkcVdcSZZbQxHv2FC0tpMZiQ/exec";
+  "https://script.google.com/macros/s/AKfycbwyxob0wKgK8lY60Qn0jDTVAvQ74FHursZZvQiQY-5ciK6RSYa16Z9ZUfmw6vM47xtafg/exec";
 
 export async function POST(request: NextRequest) {
   try {
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
         transporter
           .sendMail({
             from: process.env.GMAIL_USER,
-            to: "ahmedmasshoud929@gmail.com",
+            to: "ahmedmassouddev@gmail.com",
             replyTo: email,
             subject: `Portfolio Contact: ${subject}`,
             text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\nDate: ${new Date().toISOString()}`,

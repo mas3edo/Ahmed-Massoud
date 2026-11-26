@@ -57,7 +57,7 @@ export default function Dock() {
           </a>
         ))}
         <button className="k" onClick={() => setOpen(true)} aria-label="Open menu"><b className="kd">⌘K</b><b className="km">☰ Menu</b></button>
-        <a className="hire" href="mailto:ahmedmasshoud929@gmail.com">Hire me</a>
+        <a className="hire" href="mailto:ahmedmassouddev@gmail.com">Hire me</a>
       </header>
       <div className={`pal${open ? " o" : ""}`} onClick={() => setOpen(false)}>
         <div onClick={(e) => e.stopPropagation()}>
